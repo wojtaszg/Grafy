@@ -10,14 +10,33 @@ using namespace std;
 
 		int main()
 		{
-			int  n, v ,p;
-			// Zbiory Q i S
-
-			//graf a(10);
-			//a.najkrotszaDrogaMiedzyWierzcholkami(0, 3,10);
-
-			graf *tab[100];
+			int v1,v2,v ,p;
 			
+			/*cout<<"Podaj wierzcholek startowy i koncowy: ";
+			cin >> v1 >> v2;
+			cout<<"Podaj liczbe wierzcholkow i gestosc: ";
+			cin>>v >> p;
+			graf a(v);
+			a.poczatek(v,v1);
+			a.wypelnijLosowo(v,p);
+			a.wyznaczSciezki(v);
+			a.wyswietlWynikNajDrogi(v,v2);
+			a.zapiszWynikiSciezki(v,v2);
+			//a.najkrotszaDrogaMiedzyWierzcholkami(0, 3,10);*/
+		
+					cout<<"Macierz: "<<endl;
+					graf a(6);
+					a.poczatek(6, 0);
+					a.wczytajGraf('m');
+					a.wyznaczSciezkiMacierz(6);
+					a.wyswietlWynikMacierzy(6);
+
+		
+
+			
+
+			/*graf *tab[100];
+				int n;
 			cout << "Podaj rozmiar grafu: ";
 			cin >> n;
 			cout << "Podaj gestosc grafu: ";
@@ -38,7 +57,7 @@ using namespace std;
 				double czas = (clock() - start) / CLOCKS_PER_SEC;
 
 				cout << "Czas dla 100 grafow: " << czas << endl;
-				cout << "Sredni czas dla 1 grafu: " << czas / 100 << endl;
+				cout << "Sredni czas dla 1 grafu: " << czas / 100 << endl;*/
 				/*graf a(6);
 					a.poczatek(6, 0);
 					a.wczytajGraf('l');

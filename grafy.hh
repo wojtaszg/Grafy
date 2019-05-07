@@ -71,15 +71,7 @@ class lista
 		void wczytajGraf(char x);
 		void zapiszWyniki(int n);
 		void wyswietlWynikNajDrogi(int n,int w);
-		void najkrotszaDrogaMiedzyWierzcholkami(int w1, int w2,int n)
-		{
-			poczatek(n,w1);
-			wyznaczSciezki(n);
-			wyswietlWynikNajDrogi(n,w2);
-		}
-		
-	
-		
+		void zapiszWynikiSciezki(int n, int w);
 
 		};
 

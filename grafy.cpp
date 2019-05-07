@@ -39,8 +39,8 @@ ifstream wczytaj("wczytaj.txt");
 
 		void macierz::wypelnijLosowoMacierz(int wierzcholki, int procent)
 		{
-			int k = wyliczKrawedzie(wierzcholki, procent);
-			int i = 0, m, n, l = wierzcholki - 2, z = 0, s = 0, tab[500], suma = 0,w;
+			//int k = wyliczKrawedzie(wierzcholki, procent);
+			int i = 0, m, n, l = wierzcholki - 2,  tab[500], w;
 			
 			for (int i = 0; i < wierzcholki; i++)
 			{
@@ -110,7 +110,7 @@ ifstream wczytaj("wczytaj.txt");
 
 		void graf::wypelnijLosowo(int wierzcholki, int procent)
 		{
-			int k = wyliczKrawedzie(wierzcholki, procent);
+			//int k = wyliczKrawedzie(wierzcholki, procent);
 
 			for (int i = 0; i < wierzcholki; i++)
 			{
@@ -125,7 +125,7 @@ ifstream wczytaj("wczytaj.txt");
 				pw->kolejny = grafy[i];
 				grafy[i] = pw;                // Element dołšczamy do listy
 			}
-			int i=0, m, n, l = wierzcholki-2,z=0,s=0, tab[500],suma=0;
+			int i=0, m, n, l = wierzcholki-2, tab[500];
 			for (int j = l; j > 0 ; j--)
 			{
 				
@@ -238,14 +238,17 @@ ifstream wczytaj("wczytaj.txt");
 		void graf::wyswietlWynikNajDrogi(int n,int w)
 		{
 			int i, j;
-			for (i = w; i < w+1; i++)
+			for (i = 0; i < n; i++)
 			{
+				if(i==w)
+				{				
 				cout << i << ": ";
 				// cieżkę przechodzimy od końca ku poczštkowi,
 				// Zapisujšc na stosie kolejne wierzchołki
 
 				for (j = i; j > -1; j = poprzedni[j])
 						Stos[wsk++] = j;
+				}
 
 				// Wywietlamy cieżkę, pobierajšc wierzchołki ze stosu
 
@@ -254,6 +257,7 @@ ifstream wczytaj("wczytaj.txt");
 					cout << Stos[--wsk] << " ";
 				}
 				// Na końcu cieżki wypisujemy jej koszt
+				if(i==w)
 				cout << "$" << dojscia[i] << endl;
 			}
 		}
@@ -329,6 +333,32 @@ ifstream wczytaj("wczytaj.txt");
 				}
 				// Na końcu cieżki wypisujemy jej koszt
 
+				zapis << "$" << dojscia[i] << endl;
+			}
+			zapis.close();
+		}
+
+		void graf::zapiszWynikiSciezki(int n, int w)
+		{
+			int i, j;
+			for (i = 0; i < n; i++)
+			{
+				if(i==w)
+				{
+				zapis << i << ": ";
+				// cieżkę przechodzimy od końca ku poczštkowi,
+				// Zapisujšc na stosie kolejne wierzchołki
+
+				for (j = i; j > -1; j = poprzedni[j])
+					Stos[wsk++] = j;
+				}
+
+				while (wsk)
+				{
+					zapis << Stos[--wsk] << " ";
+				}
+				// Na końcu cieżki wypisujemy jej koszt
+				if(i==w)
 				zapis << "$" << dojscia[i] << endl;
 			}
 			zapis.close();
